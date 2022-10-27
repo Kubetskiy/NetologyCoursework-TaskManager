@@ -35,10 +35,13 @@ public class TodoServer {
                     var requestTask = gson.fromJson(request, RequestTask.class);
                     // разбираем запрос
                     switch (requestTask.type) {
-                        case ADD -> taskManager.addTask(requestTask.task);
-                        case REMOVE -> taskManager.removeTask(requestTask.task);
-                        case RESTORE -> taskManager.restoreTask();
-                        default -> throw new IllegalStateException("Unexpected value: " + requestTask.type);
+                        case ADD: taskManager.addTask(requestTask.task);
+                            break;
+                        case REMOVE: taskManager.removeTask(requestTask.task);
+                            break;
+                        case RESTORE: taskManager.restoreTask();
+                            break;
+                        default: throw new IllegalStateException("Unexpected value: " + requestTask.type);
                     }
                     // Запрашиваем результат и отправляем его клиенту
                     var response = taskManager.getAllTasks();
