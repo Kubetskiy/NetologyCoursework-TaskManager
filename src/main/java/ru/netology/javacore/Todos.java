@@ -67,8 +67,10 @@ public class Todos {
         if (!operationStack.isEmpty()) {
             var pair = operationStack.pop();
             switch (pair.operation) {
-                case REMOVE -> addTaskWithoutWritingToTheStack(pair.task);
-                case ADD -> removeTaskWithoutWritingToTheStack(pair.task);
+                case REMOVE: addTaskWithoutWritingToTheStack(pair.task);
+                break;
+                case ADD: removeTaskWithoutWritingToTheStack(pair.task);
+                break;
             }
         }
     }
